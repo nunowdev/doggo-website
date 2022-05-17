@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DogImage from "../assets/dog.png";
+import axios from "axios";
 
 const Select = () => {
+  const [breeds, setBreeds] = useState({});
+  async function listBreeds() {
+    try {
+      const response = await axios.get("https://dog.ceo/api/breeds/list/all");
+      // console.log(response.data.message);
+      setBreeds(response);
+      console.log(breeds);
+    } catch {
+      console.log("error");
+    }
+  }
+
+  useEffect(() => {
+    listBreeds();
+  }, []);
+
   return (
     <section className="h-screen bg-neutral-100 w-screen flex items-center justify-center font-poppins">
       <div className="container flex flex-col md:flex-row w-3/4 h-3/4 items-center justify-center">
@@ -11,12 +28,12 @@ const Select = () => {
           </h1>
           <h2 className="mb-4">Choose your favourite Doggo breed :D</h2>
           <select className="text-white bg-neutral-700 text-xl p-2 rounded">
-            <option value="Retriever" selected hidden>
+            <option defaultValue={{ label: "Select", value: "select" }} hidden>
               Select
             </option>
-            <option value="Retriever">Retriever</option>
-            <option value="Retriever">Retriever</option>
-            <option value="Retriever">Retriever</option>
+            {/* {breeds.map((item) => {
+              <option value={item}></option>;
+            })} */}
           </select>
         </div>
         <div className="h-2/6 sm:h-3/6 md:h-2/4 lg:h-3/4 w-full flex">
