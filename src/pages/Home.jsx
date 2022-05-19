@@ -15,7 +15,7 @@ const Home = () => {
             Search for pictures of your favourite dog breed :D
           </h2>
           <Link to="/select">
-            <button className="text-white bg-neutral-700 text-2xl p-2 rounded">
+            <button className="text-white bg-neutral-700 hover:text-xl transition-all p-2 rounded">
               Get Started!
             </button>
           </Link>

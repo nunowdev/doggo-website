@@ -27,7 +27,7 @@ const Select = () => {
             Select a Dog Breed.
           </h1>
           <h2 className="mb-4">Choose your favourite Doggo breed :D</h2>
-          <select className="text-white bg-neutral-700 w-1/2 p-2 rounded">
+          <select className="text-white bg-neutral-700 hover:text-xl transition-all p-2 rounded">
             <option defaultValue={{ label: "Select", value: "select" }} hidden>
               Select
             </option>
@@ -36,7 +36,6 @@ const Select = () => {
                 {item}
               </option>
             ))}
-            <option value="hello">Hello</option>
           </select>
         </div>
         <div className="h-2/6 sm:h-3/6 md:h-2/4 lg:h-3/4 w-full flex">
