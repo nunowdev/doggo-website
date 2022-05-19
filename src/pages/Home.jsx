@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 import Logo from "../assets/doggologo.png";
 
@@ -13,9 +14,11 @@ const Home = () => {
           <h2 className="mb-4">
             Search for pictures of your favourite dog breed :D
           </h2>
-          <button className="text-white bg-neutral-700 text-2xl p-2 rounded">
-            Get Started!
-          </button>
+          <Link to="/select">
+            <button className="text-white bg-neutral-700 text-2xl p-2 rounded">
+              Get Started!
+            </button>
+          </Link>
         </div>
         <div className="h-2/6 sm:h-3/6 md:h-2/4 lg:h-3/4 w-full flex">
           <img src={Logo} alt="" className="min-w-1/3 max-w-lg"></img>

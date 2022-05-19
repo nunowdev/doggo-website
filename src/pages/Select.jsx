@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react";
 import DogImage from "../assets/dog.png";
 import axios from "axios";
 
+// https://dog.ceo/api/breeds/list/all
+
 const Select = () => {
-  const [breeds, setBreeds] = useState({});
-  async function listBreeds() {
-    try {
-      const response = await axios.get("https://dog.ceo/api/breeds/list/all");
-      // console.log(response.data.message);
-      setBreeds(response);
-      console.log(breeds);
-    } catch {
-      console.log("error");
-    }
-  }
+  //const [breeds, setBreeds] = useState({});
+  const [breedsArr, setBreedsArr] = useState([]);
 
   useEffect(() => {
-    listBreeds();
+    axios
+      .get("https://dog.ceo/api/breeds/list/all")
+      .then((response) => {
+        console.log(Object.keys(response.data.message));
+        setBreedsArr(Object.keys(response.data.message));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
-
   return (
     <section className="h-screen bg-neutral-100 w-screen flex items-center justify-center font-poppins">
       <div className="container flex flex-col md:flex-row w-3/4 h-3/4 items-center justify-center">
@@ -27,13 +27,16 @@ const Select = () => {
             Select a Dog Breed.
           </h1>
           <h2 className="mb-4">Choose your favourite Doggo breed :D</h2>
-          <select className="text-white bg-neutral-700 text-xl p-2 rounded">
+          <select className="text-white bg-neutral-700 w-1/2 p-2 rounded">
             <option defaultValue={{ label: "Select", value: "select" }} hidden>
               Select
             </option>
-            {/* {breeds.map((item) => {
-              <option value={item}></option>;
-            })} */}
+            {breedsArr.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+            <option value="hello">Hello</option>
           </select>
         </div>
         <div className="h-2/6 sm:h-3/6 md:h-2/4 lg:h-3/4 w-full flex">
